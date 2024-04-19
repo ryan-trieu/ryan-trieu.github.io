@@ -1,9 +1,9 @@
 :root {
     --primaryText: #fff;
     --secondaryText: #B0D2CD;
-    --primary: rgba(255, 228, 226, 1);
-    --secondary: rgba(255, 1, 94, .60); 
-    --buttonHover: rgba(156, 39, 176, .40);
+    --primary: rgba(255, 1, 94, .60);
+    --secondary: rgba(255, 228, 226, 1);
+    --buttonHover: rgba(61, 154, 197, 0.4);
     --smallButtonHover: rgba(0, 0, 0, .25);
 }
 
@@ -34,7 +34,7 @@ body {
     background-attachment: fixed;
     /* Resizes the background image to cover the entire container */
     background-size: cover;
-    font-family: Futura, Verdana, sans-serif;
+    font-family: "EB Garamond", serif;
     line-height: 1.5;
     font-size: 18px;
     display: flex;
