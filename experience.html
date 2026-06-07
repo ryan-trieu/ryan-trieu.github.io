@@ -3,33 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ryan Trieu</title>
+  <title>Experience — Ryan Trieu</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="nav.css" />
   <style>
-    .home-hero {
-      min-height: calc(100vh - 50px);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 0 2.5rem;
-      max-width: 740px;
-      margin: 0 auto;
-    }
-    .home-hero h1 {
-      font-family: 'Lora', serif;
-      font-size: 52px;
-      font-weight: 500;
-      line-height: 1.1;
-      margin-bottom: 1rem;
-    }
-    .home-hero h1 em { font-style: italic; color: var(--accent); }
-    .home-hero p {
-      font-size: 16px;
-      color: var(--text-muted);
-      font-weight: 300;
+    .page-header { margin-bottom: 4rem; padding-bottom: 2rem; border-bottom: 0.5px solid var(--border); }
+    .page-header h1 { font-family: 'Lora', serif; font-size: 36px; font-weight: 500; }
+    .page-header h1 em { font-style: italic; color: var(--accent); }
+    .placeholder {
+      color: var(--text-faint);
+      font-size: 14px;
+      font-style: italic;
     }
   </style>
 </head>
@@ -40,14 +26,16 @@
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="projects.html">Projects</a></li>
-      <li><a href="experience.html">Experience</a></li>
+      <li><a href="experience.html" class="active">Experience</a></li>
       <li><a href="cv.html">CV</a></li>
     </ul>
   </nav>
-  <div class="home-hero">
-    <h1>Ryan <em>Trieu</em></h1>
-    <p>CS / Machine Learning &nbsp;·&nbsp; AI Engineering &nbsp;·&nbsp; Georgia Tech</p>
-  </div>
+  <main>
+    <div class="page-header">
+      <h1>Experience</h1>
+    </div>
+    <p class="placeholder">Content coming soon.</p>
+  </main>
   <footer>
     <span>© 2026 Ryan Trieu &nbsp;·&nbsp; M.S. CS · Georgia Tech</span>
     <a class="pdf-link" href="Resume_Ryan.pdf">Download Resume ↓</a>
