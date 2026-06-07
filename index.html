@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ryan Trieu — ML Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green-50: #E1F5EE;
+      --green-100: #9FE1CB;
+      --green-600: #1D9E75;
+      --green-800: #0F6E56;
+      --text: #1a1a18;
+      --text-muted: #5a5a56;
+      --text-faint: #9a9a95;
+      --bg: #faf9f7;
+      --bg-card: #ffffff;
+      --border: rgba(0,0,0,0.09);
+      --border-strong: rgba(0,0,0,0.16);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text: #f0ede8;
+        --text-muted: #a8a49e;
+        --text-faint: #6a6660;
+        --bg: #181715;
+        --bg-card: #222220;
+        --border: rgba(255,255,255,0.08);
+        --border-strong: rgba(255,255,255,0.14);
+        --green-50: #083020;
+        --green-100: #0F6E56;
+        --green-600: #5DCAA5;
+        --green-800: #9FE1CB;
+      }
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 0.5px solid var(--border);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 52px;
+    }
+
+    .nav-name {
+      font-family: 'Lora', serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .nav-links a:hover { color: var(--green-600); }
+
+    /* LAYOUT */
+    main {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 4rem 2rem 6rem;
+    }
+
+    /* HERO */
+    .hero {
+      display: flex;
+      gap: 2rem;
+      align-items: flex-start;
+      margin-bottom: 3rem;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    .avatar {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      background: var(--green-50);
+      border: 2px solid var(--green-100);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Lora', serif;
+      font-size: 26px;
+      font-weight: 500;
+      color: var(--green-800);
+      flex-shrink: 0;
+    }
+
+    .hero-text h1 {
+      font-family: 'Lora', serif;
+      font-size: 30px;
+      font-weight: 500;
+      margin-bottom: 4px;
+      line-height: 1.2;
+    }
+
+    .hero-tagline {
+      font-size: 14px;
+      color: var(--text-muted);
+      font-weight: 300;
+      margin-bottom: 14px;
+      letter-spacing: 0.01em;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      padding: 4px 11px;
+      border-radius: 20px;
+      border: 0.5px solid var(--border-strong);
+      color: var(--text-muted);
+      text-decoration: none;
+      background: var(--bg-card);
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    .chip:hover { color: var(--green-600); border-color: var(--green-600); }
+
+    /* BIO */
+    .bio {
+      font-family: 'Lora', serif;
+      font-size: 17px;
+      line-height: 1.85;
+      color: var(--text);
+      margin-bottom: 3.5rem;
+      padding-left: 1.25rem;
+      border-left: 2px solid var(--green-100);
+      opacity: 0;
+      animation: fadeUp 0.6s 0.15s ease forwards;
+    }
+
+    /* SECTIONS */
+    section {
+      margin-bottom: 3rem;
+      opacity: 0;
+      animation: fadeUp 0.6s ease forwards;
+    }
+
+    section:nth-of-type(1) { animation-delay: 0.25s; }
+    section:nth-of-type(2) { animation-delay: 0.35s; }
+    section:nth-of-type(3) { animation-delay: 0.45s; }
+    section:nth-of-type(4) { animation-delay: 0.55s; }
+
+    .section-label {
+      font-size: 10.5px;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: var(--text-faint);
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 12px;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      border-radius: 12px;
+      padding: 1.1rem 1.25rem;
+      transition: border-color 0.2s, transform 0.2s;
+      cursor: default;
+    }
+
+    .project-card:hover {
+      border-color: var(--green-100);
+      transform: translateY(-2px);
+    }
+
+    .project-icon {
+      font-size: 22px;
+      margin-bottom: 10px;
+      color: var(--green-600);
+      display: block;
+    }
+
+    .project-name {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+
+    .project-meta {
+      font-size: 11px;
+      color: var(--text-faint);
+      margin-bottom: 8px;
+    }
+
+    .project-desc {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      line-height: 1.55;
+      margin-bottom: 12px;
+    }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 4px; }
+
+    .tag {
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 10px;
+      background: var(--green-50);
+      color: var(--green-800);
+      font-weight: 400;
+    }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 10px;
+    }
+
+    .skill-group {
+      background: var(--bg-card);
+      border: 0.5px solid var(--border);
+      border-radius: 10px;
+      padding: 0.9rem 1rem;
+    }
+
+    .skill-group-label {
+      font-size: 10.5px;
+      color: var(--text-faint);
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .skill-list {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* EDUCATION */
+    .edu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 0.85rem 0;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .edu-item:last-child { border-bottom: none; }
+
+    .edu-school {
+      font-size: 14px;
+      font-weight: 500;
+      margin-bottom: 3px;
+    }
+
+    .edu-deg {
+      font-size: 12.5px;
+      color: var(--text-muted);
+    }
+
+    .edu-year {
+      font-size: 12px;
+      color: var(--text-faint);
+      white-space: nowrap;
+      margin-left: 1rem;
+      padding-top: 2px;
+    }
+
+    /* CONTACT */
+    .contact-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13.5px;
+      color: var(--text-muted);
+    }
+
+    .contact-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green-600);
+      flex-shrink: 0;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-faint);
+      padding: 2rem;
+      border-top: 0.5px solid var(--border);
+    }
+
+    /* ANIMATION */
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* MOBILE */
+    @media (max-width: 540px) {
+      nav { padding: 0 1rem; }
+      .nav-links { gap: 1rem; }
+      main { padding: 2.5rem 1.25rem 4rem; }
+      .hero { flex-direction: column; gap: 1rem; }
+      .hero-text h1 { font-size: 24px; }
+      .bio { font-size: 15px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="nav-name" href="#">Ryan Trieu</a>
+    <ul class="nav-links">
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- HERO -->
+    <div class="hero">
+      <div class="avatar">RT</div>
+      <div class="hero-text">
+        <h1>Ryan Trieu</h1>
+        <p class="hero-tagline">ML Engineer &nbsp;·&nbsp; Georgia Tech M.S. CS &nbsp;·&nbsp; AI Systems Builder</p>
+        <div class="chips">
+          <a class="chip" href="mailto:ryantrieu123@gmail.com">✉ ryantrieu123@gmail.com</a>
+          <span class="chip">📍 Sterling, VA &amp; Brooklyn, NY</span>
+          <span class="chip">📞 (571) 789-7306</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- BIO -->
+    <p class="bio">
+      I'm a machine learning engineer and CS graduate student at Georgia Tech, specializing in building production-grade AI systems — from fine-tuning large transformers to architecting full MLOps pipelines on the cloud. I love the full arc: wrangling raw data, training models that actually work, and shipping them into the real world.
+    </p>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <p class="section-label">Projects</p>
+      <div class="projects-grid">
+
+        <div class="project-card">
+          <span class="project-icon">🗂</span>
+          <p class="project-name">Document Processing Service</p>
+          <p class="project-meta">GT Alumni Collaboration · Spring 2026</p>
+          <p class="project-desc">Fine-tuned LayoutLMv3 (133M params) for receipt entity extraction, achieving 0.94 F1. Includes a RAG query layer with source attribution and full MLOps deployment on AWS.</p>
+          <div class="tags">
+            <span class="tag">PyTorch</span>
+            <span class="tag">HuggingFace</span>
+            <span class="tag">LayoutLMv3</span>
+            <span class="tag">MLflow</span>
+            <span class="tag">AWS</span>
+            <span class="tag">Docker</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <span class="project-icon">🧬</span>
+          <p class="project-name">Protein Folding Optimization</p>
+          <p class="project-meta">VT Capstone · Spring 2025</p>
+          <p class="project-desc">Benchmarked five optimization algorithms for de novo folding of a 20-residue miniprotein using AMBER molecular dynamics simulations.</p>
+          <div class="tags">
+            <span class="tag">Python</span>
+            <span class="tag">AMBER</span>
+            <span class="tag">Simulated Annealing</span>
+            <span class="tag">Monte Carlo</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <span class="project-icon">🦷</span>
+          <p class="project-name">DentalSoap</p>
+          <p class="project-meta">GT ML/DS Network · Fall 2025</p>
+          <p class="project-desc">Automated dental SOAP note generation MVP built in a 7-person, two-week sprint. Serverless backend on Google Cloud Run with Firebase auth and rate limiting.</p>
+          <div class="tags">
+            <span class="tag">React</span>
+            <span class="tag">Gemini API</span>
+            <span class="tag">Cloud Run</span>
+            <span class="tag">Firebase</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <p class="section-label">Technical Skills</p>
+      <div class="skills-grid">
+        <div class="skill-group">
+          <p class="skill-group-label">Languages &amp; Frameworks</p>
+          <p class="skill-list">Python, SQL, JavaScript, React, Flask, FastAPI</p>
+        </div>
+        <div class="skill-group">
+          <p class="skill-group-label">ML &amp; Data Science</p>
+          <p class="skill-list">PyTorch, HuggingFace Transformers, Scikit-learn, NumPy, Pandas, Tesseract OCR</p>
+        </div>
+        <div class="skill-group">
+          <p class="skill-group-label">MLOps &amp; Infrastructure</p>
+          <p class="skill-list">MLflow, Docker, Git/GitHub, AWS EC2/S3, Firebase Auth, Firestore</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education">
+      <p class="section-label">Education</p>
+      <div class="edu-item">
+        <div>
+          <p class="edu-school">Georgia Institute of Technology</p>
+          <p class="edu-deg">M.S. Computer Science — Machine Learning Specialization</p>
+        </div>
+        <span class="edu-year">Expected 2028</span>
+      </div>
+      <div class="edu-item">
+        <div>
+          <p class="edu-school">Virginia Tech</p>
+          <p class="edu-deg">B.S. Computer Science</p>
+        </div>
+        <span class="edu-year">May 2025</span>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <p class="section-label">Contact</p>
+      <div class="contact-grid">
+        <div class="contact-row">
+          <span class="contact-dot"></span>
+          <a href="mailto:ryantrieu123@gmail.com" style="color: inherit; text-decoration: none;">ryantrieu123@gmail.com</a>
+        </div>
+        <div class="contact-row">
+          <span class="contact-dot"></span>
+          (571) 789-7306
+        </div>
+        <div class="contact-row">
+          <span class="contact-dot"></span>
+          Sterling, VA &amp; Brooklyn, NY
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 Ryan Trieu
+  </footer>
+
+</body>
+</html>
