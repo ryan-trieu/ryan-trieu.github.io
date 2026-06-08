@@ -11,7 +11,7 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #f7f4ef;
+      --bg: #faf9f7;
       --ink: #1a1a18;
       --muted: #6b6b66;
       --accent: #2a5c8f;
@@ -247,11 +247,31 @@
       </div>
     </div>
 
-    <div class="stubs">
-      <div class="stub">
-        <h3>Protein Folding Optimization</h3>
-        <span>Coming soon</span>
+    <div class="project">
+      <div class="project-meta">
+        <h2>Protein Folding Optimization</h2>
+        <div class="project-context">VT Capstone &middot; Spring 2025</div>
+        <div class="tags">
+          <span class="tag">Python</span>
+          <span class="tag">AMBER</span>
+          <span class="tag">Molecular Dynamics</span>
+        </div>
       </div>
+
+      <div class="project-body">
+        <p>When AlphaFold won the Nobel Prize in Chemistry in 2024, it made protein folding feel like a real and tractable problem for the first time. That was part of what drew me to this project. We were not using deep learning like AlphaFold, but we were working on the same underlying challenge: figure out how a protein folds by finding the lowest-energy configuration it can settle into.</p>
+
+        <p>The difficulty is that the energy landscape is rugged. There are countless local minima, configurations that look stable but are not the true global minimum, and most optimizers get trapped in them. Our task was to benchmark five methods against this kind of landscape: Newton's Method, Conjugate Gradient, Differential Evolution, Monte Carlo, and Simulated Annealing.</p>
+
+        <p>Simulated annealing came out on top. The reason it works well here is that it can escape local minima by occasionally accepting worse solutions, similar to how slowly cooling metal settles into a more stable crystalline structure. We pushed it further by designing multi-cycle annealing protocols with controlled temperature peaks and cooling phases, which improved on single-cycle baselines.</p>
+
+        <p>All simulations ran on the AMBER molecular dynamics framework with implicit solvent modeling, applied to a 20-residue miniprotein called Protein T.</p>
+
+        <p>Most of my undergrad projects were pieces of something larger, useful in context but not really on their own. This felt different. We had a real problem, a set of tools, and a question with an actual answer at the end of it.</p>
+      </div>
+    </div>
+
+    <div class="stubs">
       <div class="stub">
         <h3>DentalSoap</h3>
         <span>Coming soon</span>
