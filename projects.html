@@ -6,205 +6,108 @@
   <title>Projects — Ryan Trieu</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="nav.css" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg: #f7f4ef;
-      --ink: #1a1a18;
-      --muted: #6b6b66;
-      --accent: #2a5c8f;
-      --rule: #e0ddd8;
-      --tag-bg: #edeae4;
-      --font-body: 'EB Garamond', Georgia, serif;
-      --font-mono: 'DM Mono', monospace;
-    }
-
-    html { font-size: 18px; }
-
-    body {
-      background: var(--bg);
-      color: var(--ink);
-      font-family: var(--font-body);
-      line-height: 1.7;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* NAV */
-    nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.5rem 3rem;
-      border-bottom: 1px solid var(--rule);
-    }
-
-    nav .wordmark {
-      font-family: var(--font-body);
-      font-size: 1.05rem;
-      font-weight: 500;
-      text-decoration: none;
-      color: var(--ink);
-      letter-spacing: 0.01em;
-    }
-
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-    }
-
-    nav ul a {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      text-decoration: none;
-      color: var(--muted);
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      transition: color 0.15s;
-    }
-
-    nav ul a:hover,
-    nav ul a.active { color: var(--ink); }
-
-    /* MAIN */
-    main {
-      flex: 1;
-      max-width: 720px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 4rem 2rem 6rem;
-    }
-
     .page-header {
-      margin-bottom: 3.5rem;
+      margin-bottom: 4rem;
+      padding-bottom: 2rem;
+      border-bottom: 0.5px solid var(--border);
     }
 
     .page-header h1 {
-      font-size: 2rem;
-      font-weight: 400;
-      letter-spacing: -0.01em;
-      margin-bottom: 0.6rem;
+      font-family: 'Lora', serif;
+      font-size: 36px;
+      font-weight: 500;
+      margin-bottom: 0.4rem;
     }
 
     .page-header p {
-      color: var(--muted);
+      font-size: 14px;
+      color: var(--text-faint);
       font-style: italic;
-      font-size: 1rem;
     }
 
     /* PROJECT */
     .project {
-      border-top: 1px solid var(--rule);
-      padding-top: 2.5rem;
-      margin-bottom: 3.5rem;
+      padding-bottom: 3rem;
+      margin-bottom: 3rem;
+      border-bottom: 0.5px solid var(--border);
     }
 
     .project-meta {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
     }
 
     .project-meta h2 {
-      font-size: 1.3rem;
+      font-family: 'Lora', serif;
+      font-size: 22px;
       font-weight: 500;
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.2rem;
     }
 
     .project-context {
-      font-family: var(--font-mono);
-      font-size: 0.72rem;
-      color: var(--muted);
-      letter-spacing: 0.03em;
-      margin-bottom: 0.9rem;
+      font-size: 12px;
+      color: var(--text-faint);
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.01em;
     }
 
     .tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.4rem;
+      gap: 0.35rem;
     }
 
     .tag {
-      font-family: var(--font-mono);
-      font-size: 0.65rem;
-      background: var(--tag-bg);
-      color: var(--muted);
-      padding: 0.2rem 0.55rem;
-      border-radius: 2px;
-      letter-spacing: 0.02em;
+      font-size: 11px;
+      background: var(--bg-secondary);
+      color: var(--text-faint);
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+      border: 0.5px solid var(--border);
     }
 
     .project-body p {
-      margin-bottom: 1.1rem;
-      font-size: 1rem;
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
     }
 
     .project-body p:last-child { margin-bottom: 0; }
 
-    /* COMING SOON STUBS */
+    /* STUBS */
     .stubs {
-      border-top: 1px solid var(--rule);
-      padding-top: 2.5rem;
       display: flex;
       flex-direction: column;
-      gap: 1.2rem;
+      gap: 1rem;
     }
 
     .stub {
       display: flex;
       align-items: baseline;
-      gap: 1rem;
+      gap: 0.75rem;
     }
 
     .stub h3 {
-      font-size: 1rem;
+      font-family: 'Lora', serif;
+      font-size: 16px;
       font-weight: 500;
+      color: var(--text);
     }
 
     .stub span {
-      font-family: var(--font-mono);
-      font-size: 0.68rem;
-      color: var(--muted);
-      letter-spacing: 0.03em;
-    }
-
-    /* FOOTER */
-    footer {
-      border-top: 1px solid var(--rule);
-      padding: 1.5rem 3rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      font-family: var(--font-mono);
-      font-size: 0.7rem;
-      color: var(--muted);
-      letter-spacing: 0.03em;
-    }
-
-    footer a {
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.15s;
-    }
-
-    footer a:hover { color: var(--ink); }
-
-    @media (max-width: 600px) {
-      nav { padding: 1.2rem 1.5rem; }
-      nav ul { gap: 1.2rem; }
-      main { padding: 2.5rem 1.5rem 4rem; }
-      footer { padding: 1.2rem 1.5rem; flex-direction: column; gap: 0.5rem; align-items: flex-start; }
+      font-size: 12px;
+      color: var(--text-faint);
+      font-style: italic;
     }
   </style>
 </head>
 <body>
-
   <nav>
-    <a class="wordmark" href="index.html">Ryan Trieu</a>
-    <ul>
+    <a class="nav-logo" href="index.html">Ryan Trieu</a>
+    <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="projects.html" class="active">Projects</a></li>
       <li><a href="cv.html">CV</a></li>
@@ -220,7 +123,7 @@
     <div class="project">
       <div class="project-meta">
         <h2>Document Processing Service</h2>
-        <div class="project-context">GT Alumni Collaboration &middot; Spring 2026</div>
+        <div class="project-context">GT Alumni Collaboration &nbsp;·&nbsp; Spring 2026</div>
         <div class="tags">
           <span class="tag">Python</span>
           <span class="tag">PyTorch</span>
@@ -231,18 +134,12 @@
           <span class="tag">AWS</span>
         </div>
       </div>
-
       <div class="project-body">
         <p>When I started at Georgia Tech in Spring 2026, I wanted a project that would force me to actually learn machine learning, not just read about it. This was it.</p>
-
         <p>The idea was practical: build a service that extracts structured data from documents like receipts automatically. The kind of thing that saves a business hours of manual data entry, but flexible enough that anyone could use it on their own documents. We designed it with commercial intent, something that could realistically be sold as a service.</p>
-
         <p>The core is a fine-tuned LayoutLMv3, a 133M parameter multimodal transformer that understands documents by combining the text, the layout, and the visual appearance of the page together. We trained it on the SROIE receipt dataset to extract four fields: Vendor, Address, Total, and Date, reaching an F1 score of 0.83. Getting there meant running a lot of experiments: tweaking hyperparameters, adjusting label schemes, comparing runs. MLflow tracked everything, which made it possible to actually learn from the iteration instead of losing track of what changed between runs.</p>
-
         <p>On top of the extraction layer, we built a RAG-powered query interface with a semantic router that classifies incoming questions and dispatches them to the right path: structured SQL generation, pgvector similarity search, or a hybrid path that uses Claude Haiku via AWS Bedrock for query generation and answer synthesis.</p>
-
         <p>The whole thing is deployed on AWS: FastAPI for the inference server, EC2 for compute, SQS for the job queue, Postgres and RDS for storage, and Docker throughout. OCR runs as its own service using Tesseract.</p>
-
         <p>This was the first project where I trained and compared many models in a real experimental loop.</p>
       </div>
     </div>
@@ -250,23 +147,18 @@
     <div class="project">
       <div class="project-meta">
         <h2>Protein Folding Optimization</h2>
-        <div class="project-context">VT Capstone &middot; Spring 2025</div>
+        <div class="project-context">VT Capstone &nbsp;·&nbsp; Spring 2025</div>
         <div class="tags">
           <span class="tag">Python</span>
           <span class="tag">AMBER</span>
           <span class="tag">Molecular Dynamics</span>
         </div>
       </div>
-
       <div class="project-body">
         <p>When AlphaFold won the Nobel Prize in Chemistry in 2024, it made protein folding feel like a real and tractable problem for the first time. That was part of what drew me to this project. We were not using deep learning like AlphaFold, but we were working on the same underlying challenge: figure out how a protein folds by finding the lowest-energy configuration it can settle into.</p>
-
         <p>The difficulty is that the energy landscape is rugged. There are countless local minima, configurations that look stable but are not the true global minimum, and most optimizers get trapped in them. Our task was to benchmark five methods against this kind of landscape: Newton's Method, Conjugate Gradient, Differential Evolution, Monte Carlo, and Simulated Annealing.</p>
-
         <p>Simulated annealing came out on top. The reason it works well here is that it can escape local minima by occasionally accepting worse solutions, similar to how slowly cooling metal settles into a more stable crystalline structure. We pushed it further by designing multi-cycle annealing protocols with controlled temperature peaks and cooling phases, which improved on single-cycle baselines.</p>
-
         <p>All simulations ran on the AMBER molecular dynamics framework with implicit solvent modeling, applied to a 20-residue miniprotein called Protein T.</p>
-
         <p>Most of my undergrad projects were pieces of something larger, useful in context but not really on their own. This felt different. We had a real problem, a set of tools, and a question with an actual answer at the end of it.</p>
       </div>
     </div>
@@ -280,9 +172,8 @@
   </main>
 
   <footer>
-    <span>© 2026 Ryan Trieu &middot; M.S. CS &middot; Georgia Tech</span>
-    <a href="Resume_Ryan.pdf">Download Resume ↓</a>
+    <span>© 2026 Ryan Trieu &nbsp;·&nbsp; M.S. CS · Georgia Tech</span>
+    <a class="pdf-link" href="Resume_Ryan.pdf">Download Resume ↓</a>
   </footer>
-
 </body>
 </html>
